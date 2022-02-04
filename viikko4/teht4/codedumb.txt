@@ -1,0 +1,26 @@
+
+    
+
+    stack<int>sortedvalues = sortter(values);
+
+    cout << "Sortted values: " <<endl;
+        while(!sortedvalues.empty()){
+        cout << sortedvalues.top() << " ";
+        sortedvalues.pop();
+    }
+
+
+stack<int>sortter(stack<int> &input){
+    stack<int>tmp;
+    while(!input.empty()){
+        int holder = input.top(); //copy first value of stack
+        input.pop(); //remove it
+
+        while(!tmp.empty() && tmp.top() > holder){ // if top value is larger than first value, push to tmp stack
+            input.push(tmp.top());
+            tmp.pop(); //remove top num
+        }
+        tmp.push(holder);
+    }
+    return tmp;
+}
